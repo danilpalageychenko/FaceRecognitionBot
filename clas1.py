@@ -1,7 +1,4 @@
-import cv2
-import sys
 import dlib
-import time
 import datetime
 import glob
 from threading import Thread
@@ -18,6 +15,7 @@ class MyThread1(Thread):
         self.sp = arg4
         self.facerec = arg5
         self.dict = {}
+
         
     def run(self):
         #predictor_path = self.arg1
@@ -47,7 +45,7 @@ class MyThread1(Thread):
                     #print(face_descriptor_name, "++++++", face_descriptor_it, "\n\n\n\n\n\n\n")
             except:
                 pass
-
+        print(self.dict)
         my_file.close()
 '''
         def run(self):

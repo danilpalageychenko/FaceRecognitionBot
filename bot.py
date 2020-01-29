@@ -1,8 +1,5 @@
-import urllib
 import telebot
 import trnsl
-from threading import Thread
-from time import sleep
 from dependence import token
 '''
 class MyThread(Thread):
@@ -55,9 +52,11 @@ def send_text(message):
         isAddFaceOrFindFace = 1
         #exit()
     elif message.text == 'Найти Лицо':
-        bot.send_message(message.chat.id, 'Отправте Фото для поиска')
+        bot.send_message(message.chat.id, 'Отправте Фото или Видео для поиска')
         isAddFaceOrFindFace = 2
         #exit()
+    elif message.text == 'qwe':
+        bot.send_message(message.chat.id, trnsl.f.dict)
     elif message:
         print(isAddFaceOrFindFace)
         bot.send_message(message.chat.id, 'Неправильный ввод')
@@ -82,6 +81,36 @@ def handle_docs_photo(message):
             bot.send_message(message.chat.id, 'Поиск запущен!')
     else:
         isAddFaceOrFindFace = 0
+
+@bot.message_handler(content_types=['video'])
+def handle_docs_video(message):
+    global isAddFaceOrFindFace
+
+    file_info = bot.get_file(message.video.file_id)
+    downloaded_file = bot.download_file(file_info.file_path)
+
+
+    if isAddFaceOrFindFace == 2:
+        with open('test/test.mp4', 'wb') as new_file:
+            new_file.write(downloaded_file)
+        bot.send_message(message.chat.id, 'Поиск запущен!')
+        print('Поиск запущен!')
+        res = trnsl.findFaceOnVideo('test/test.mp4', message.chat.id)
+        if res == 0:
+            bot.send_message(message.chat.id, 'На Видео не найдено лиц')
+        else:
+            print(res)
+            print("Поиск завершон!")
+            bot.send_message(message.chat.id, str(res) + '\n' + 'Поиск завершон!')
+    isAddFaceOrFindFace = 0
+
+
+
+
+
+
+
+
 
 
     #global downloaded_file
