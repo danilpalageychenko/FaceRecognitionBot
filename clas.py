@@ -2,20 +2,22 @@ from datetime import datetime
 from threading import Thread
 from scipy.spatial import distance
 import telebot
+import cv2
 from dependence import token
+
 
 bot = telebot.TeleBot(token)
 
 class MyThread(Thread):
-    def __init__(self, arg1, arg2, arg3, arg4, arg5, arg7):
+    def __init__(self, arg1, arg2, arg3, arg4, arg5, arg6):
         Thread.__init__(self)
         self.arg1 = arg1 
         self.arg2 = arg2
         self.arg3 = arg3
         self.arg4 = arg4
         self.chatId = arg5
-        if arg7 == 0: self.q = 'photo'
-        else: self.q = arg7
+        if arg6 == 0: self.q = 'photo'
+        else: self.q = arg6
         self.ch = 0
 
     def run(self):
@@ -32,6 +34,7 @@ class MyThread(Thread):
                     now = datetime.now()
                     print("ОБНАРУЖЕННО:....Дата: " + now.strftime("%d-%m-%Y %H:%M") + " Прiзвище особи - " + titleName)
                     bot.send_photo(self.chatId, open('foto/' + titleName + ".jpg", "rb"), now.strftime("%d-%m-%Y %H:%M") + " Прiзвище особи - " + titleName )
+                    cv2.imwrite('find/' + now.strftime("%d-%m-%Y %H.%M ") + titleName + '.jpg', self.arg4)
                     if isFaceFound == 0: isFaceFound = 1
                 else:
                     self.q.put(titleName)

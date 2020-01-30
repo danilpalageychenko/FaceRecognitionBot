@@ -1,5 +1,6 @@
 import telebot
 import trnsl
+import os
 from dependence import token
 '''
 class MyThread(Thread):
@@ -44,22 +45,22 @@ def send_text(message):
         # bot.reply_to(message, "Фото добавлено")
         if trnsl.addFace(photoPathAndName) == 0:
             bot.send_message(message.chat.id, 'На фото не найдено лица')
+            os.remove(photoPathAndName)
         else:
             bot.send_message(message.chat.id, 'Добавлено')
 
     elif message.text == 'Добавить Лицо':
         bot.send_message(message.chat.id, 'Отправте Фото для загрузки')
         isAddFaceOrFindFace = 1
-        #exit()
     elif message.text == 'Найти Лицо':
         bot.send_message(message.chat.id, 'Отправте Фото или Видео для поиска')
         isAddFaceOrFindFace = 2
-        #exit()
     elif message.text == 'qwe':
         bot.send_message(message.chat.id, trnsl.f.dict)
     elif message:
         print(isAddFaceOrFindFace)
         bot.send_message(message.chat.id, 'Неправильный ввод')
+
 
 @bot.message_handler(content_types=['photo'])
 def handle_docs_photo(message):
@@ -73,12 +74,14 @@ def handle_docs_photo(message):
         isAddFaceOrFindFace = 3
     elif isAddFaceOrFindFace == 2:
         isAddFaceOrFindFace = 0
-        with open('test/test.jpg', 'wb') as new_file:
+        photoPathAndName = 'inTheProcess\\' + str(message.chat.id) + '.jpg'
+        with open(photoPathAndName, 'wb') as new_file:
             new_file.write(downloaded_file)
-        if trnsl.findFace('test/test.jpg', message.chat.id) == 0:
+        if trnsl.findFace(photoPathAndName, message.chat.id) == 0:
             bot.send_message(message.chat.id, 'На фото не найдено лица')
         else:
             bot.send_message(message.chat.id, 'Поиск запущен!')
+        os.remove(photoPathAndName)
     else:
         isAddFaceOrFindFace = 0
 
@@ -91,18 +94,20 @@ def handle_docs_video(message):
 
 
     if isAddFaceOrFindFace == 2:
-        with open('test/test.mp4', 'wb') as new_file:
+        photoPathAndName = 'inTheProcess\\' + str(message.chat.id) + '.mp4'
+        with open(photoPathAndName, 'wb') as new_file:
             new_file.write(downloaded_file)
         bot.send_message(message.chat.id, 'Поиск запущен!')
         print('Поиск запущен!')
-        res = trnsl.findFaceOnVideo('test/test.mp4', message.chat.id)
+        res = trnsl.findFaceOnVideo(photoPathAndName, message.chat.id)
         if res == 0:
             bot.send_message(message.chat.id, 'На Видео не найдено лиц')
         else:
             print(res)
             print("Поиск завершон!")
             bot.send_message(message.chat.id, str(res) + '\n' + 'Поиск завершон!')
-    isAddFaceOrFindFace = 0
+        os.remove(photoPathAndName)
+        isAddFaceOrFindFace = 0
 
 
 

@@ -26,27 +26,8 @@ f=clas1.MyThread1(predictor_path, face_rec_model_path, detector, sp, facerec)
 f.start()
 f.join()
 
-def addFace(fil):
-    face_descriptor_name = f.dict.get('name')
-    face_descriptor_it = f.dict.get('val')
-    img = dlib.load_rgb_image(fil)
-    dets = detector(img)
-    if len(dets) <= 0:
-        return 0
-    for k, d in enumerate(dets):
-        shape = sp(img, d)
-        face_descriptor_name.append(fil)
-        face_descriptor_it.append(facerec.compute_face_descriptor(img, shape))
-        print('Добавлено в базу')
-        #newFaces = {'name': face_descriptor_name, 'val': face_descriptor_it}
-        #print(f.dict)
-        #f.dict.update({'name': face_descriptor_name, 'val': face_descriptor_it})
-
-        #print(f.dict.get('name'))
-        #f.dict.update(newFaces)
-    #print(f.dict.get('name'))
-
-
+def addFace(foto):
+    return f.add(foto)
 
 def findFace(foto, messageChatId):
     img = cv2.imread(foto)
