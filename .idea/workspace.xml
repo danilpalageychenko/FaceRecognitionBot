@@ -2,33 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6df15175-4c41-428b-98c5-36e782496000" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/mydatabase.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find/31-01-2020 17.44 Name-0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find/31-01-2020 17.44 Name-10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find/31-01-2020 18.01 Name-Danil.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find/31-01-2020 18.02 Name-12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/find/31-01-2020 20.39 Name-13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/foto/0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/foto/10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/foto/12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/foto/13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inTheProcess/d5c9783d-442e-11ea-b078-34f39ac665e1.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inTheProcess/ec80a8f8-4443-11ea-8f41-34f39ac665e1.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inTheProcess/ed63969e-4443-11ea-9373-34f39ac665e1.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clas.py" beforeDir="false" afterPath="$PROJECT_DIR$/clas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clas1.py" beforeDir="false" afterPath="$PROJECT_DIR$/clas1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_file.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/data_file.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/db/data_file.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependence.py" beforeDir="false" afterPath="$PROJECT_DIR$/dependence.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/find/30-01-2020 13.41 Danil.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/foto/foto.rar" beforeDir="false" afterPath="$PROJECT_DIR$/foto/foto.rar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foto/ttt.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trnsl.py" beforeDir="false" afterPath="$PROJECT_DIR$/trnsl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/find/31-01-2020 17.44 Name-0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/find/03-02-2020 13.00 Name-0.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/find/31-01-2020 17.44 Name-10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/find/31-01-2020 18.01 Name-Danil.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/find/31-01-2020 18.02 Name-12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/find/31-01-2020 20.39 Name-13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
     </list>
     <list id="05cfa6ec-eb56-4fe4-a377-6ee49a1c9f54" name="Fin3" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -206,7 +188,7 @@
       <workItem from="1579445811543" duration="5261000" />
       <workItem from="1579526393245" duration="33617000" />
       <workItem from="1580195388972" duration="83829000" />
-      <workItem from="1580486872892" duration="1691000" />
+      <workItem from="1580486872892" duration="6854000" />
     </task>
     <task id="LOCAL-00001" summary="Fin">
       <created>1580313457239</created>
@@ -236,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580385355631</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fin3">
+      <created>1580716992506</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1580716992506</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,43 +275,43 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="507" y="188" key="#com.intellij.tools.ToolEditorDialog/0.0.1280.680@0.0.1280.680" timestamp="1578673059565" />
-    <state x="-1322" y="-39" key="CommitChangelistDialog2" timestamp="1580385250419">
+    <state x="-1322" y="-39" key="CommitChangelistDialog2" timestamp="1580716990573">
       <screen x="-1920" y="-157" width="1920" height="1040" />
     </state>
-    <state x="-1322" y="-39" key="CommitChangelistDialog2/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@-1920.-157.1920.1040" timestamp="1580385250419" />
+    <state x="-1322" y="-39" key="CommitChangelistDialog2/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@-1920.-157.1920.1040" timestamp="1580716990573" />
     <state x="-820" y="37" key="FileChooserDialogImpl" timestamp="1580385340840">
       <screen x="-1920" y="-157" width="1920" height="1040" />
     </state>
     <state x="-820" y="37" key="FileChooserDialogImpl/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@-1920.-157.1920.1040" timestamp="1580385340840" />
     <state x="733" y="127" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1579445911946" />
-    <state width="1877" height="336" key="GridCell.Tab.0.bottom" timestamp="1580716083638">
+    <state width="1877" height="336" key="GridCell.Tab.0.bottom" timestamp="1580736234477">
       <screen x="-1920" y="-157" width="1920" height="1040" />
     </state>
-    <state width="1877" height="336" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@-1920.-157.1920.1040" timestamp="1580716083638" />
+    <state width="1877" height="336" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@-1920.-157.1920.1040" timestamp="1580736234477" />
     <state width="1237" height="197" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@0.0.1280.680" timestamp="1580485128257" />
     <state width="1877" height="204" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@1920.-146.1920.1040" timestamp="1579599501789" />
     <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1578754466720" />
     <state width="1237" height="122" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1580411905849" />
-    <state width="1877" height="336" key="GridCell.Tab.0.center" timestamp="1580716083638">
+    <state width="1877" height="336" key="GridCell.Tab.0.center" timestamp="1580736234477">
       <screen x="-1920" y="-157" width="1920" height="1040" />
     </state>
-    <state width="1877" height="336" key="GridCell.Tab.0.center/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@-1920.-157.1920.1040" timestamp="1580716083638" />
+    <state width="1877" height="336" key="GridCell.Tab.0.center/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@-1920.-157.1920.1040" timestamp="1580736234477" />
     <state width="1237" height="197" key="GridCell.Tab.0.center/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@0.0.1280.680" timestamp="1580485128257" />
     <state width="1877" height="204" key="GridCell.Tab.0.center/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@1920.-146.1920.1040" timestamp="1579599501789" />
     <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1578754466720" />
     <state width="1237" height="122" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1580411905848" />
-    <state width="1877" height="336" key="GridCell.Tab.0.left" timestamp="1580716083637">
+    <state width="1877" height="336" key="GridCell.Tab.0.left" timestamp="1580736234477">
       <screen x="-1920" y="-157" width="1920" height="1040" />
     </state>
-    <state width="1877" height="336" key="GridCell.Tab.0.left/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@-1920.-157.1920.1040" timestamp="1580716083637" />
+    <state width="1877" height="336" key="GridCell.Tab.0.left/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@-1920.-157.1920.1040" timestamp="1580736234477" />
     <state width="1237" height="197" key="GridCell.Tab.0.left/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@0.0.1280.680" timestamp="1580485128257" />
     <state width="1877" height="204" key="GridCell.Tab.0.left/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@1920.-146.1920.1040" timestamp="1579599501788" />
     <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1578754466720" />
     <state width="1237" height="122" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1580411905847" />
-    <state width="1877" height="336" key="GridCell.Tab.0.right" timestamp="1580716083638">
+    <state width="1877" height="336" key="GridCell.Tab.0.right" timestamp="1580736234477">
       <screen x="-1920" y="-157" width="1920" height="1040" />
     </state>
-    <state width="1877" height="336" key="GridCell.Tab.0.right/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@-1920.-157.1920.1040" timestamp="1580716083638" />
+    <state width="1877" height="336" key="GridCell.Tab.0.right/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@-1920.-157.1920.1040" timestamp="1580736234477" />
     <state width="1237" height="197" key="GridCell.Tab.0.right/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@0.0.1280.680" timestamp="1580485128257" />
     <state width="1877" height="204" key="GridCell.Tab.0.right/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@1920.-146.1920.1040" timestamp="1579599501789" />
     <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1578754466720" />
@@ -356,10 +345,10 @@
     </state>
     <state x="-1555" y="-157" key="SettingsEditor/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@-1920.-157.1920.1040" timestamp="1580202059742" />
     <state x="243" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1579445961583" />
-    <state x="-1368" y="98" key="Vcs.Push.Dialog.v2" timestamp="1580385533579">
+    <state x="-1368" y="98" key="Vcs.Push.Dialog.v2" timestamp="1580716999156">
       <screen x="-1920" y="-157" width="1920" height="1040" />
     </state>
-    <state x="-1368" y="98" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@-1920.-157.1920.1040" timestamp="1580385533579" />
+    <state x="-1368" y="98" key="Vcs.Push.Dialog.v2/0.0.1280.680/1920.-146.1920.1040/-1920.-157.1920.1040@-1920.-157.1920.1040" timestamp="1580716999156" />
     <state x="-1398" y="98" key="com.intellij.ide.util.TipDialog" timestamp="1580486873515">
       <screen x="-1920" y="-157" width="1920" height="1040" />
     </state>
@@ -397,7 +386,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/camFaceDetect$trnsl.coverage" NAME="trnsl Coverage Results" MODIFIED="1579535640756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/camFaceDetect$bot.coverage" NAME="bot Coverage Results" MODIFIED="1580486962259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/camFaceDetect$bot.coverage" NAME="bot Coverage Results" MODIFIED="1580727596156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/camFaceDetect$test.coverage" NAME="test Coverage Results" MODIFIED="1580400997603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cam$test.coverage" NAME="test Coverage Results" MODIFIED="1578750749295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cam$trnsl.coverage" NAME="trnsl Coverage Results" MODIFIED="1578931075856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

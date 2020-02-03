@@ -42,7 +42,6 @@ def send_text(message):
     elif message.text == 'qwe':
         bot.send_message(message.chat.id, trnsl.f.dict.items() )
     elif message:
-        print(isAddFaceOrFindFace)
         bot.send_message(message.chat.id, 'Невірне введення')
 
 @bot.message_handler(content_types=['photo'])
