@@ -1,2 +1,2 @@
-token = '1071090511:AAHQh4ACl--lIVXhJjxLk6lfYnt8LT5OT_g'
-telegramID = ['341876831', '654753898']
+token = '...'
+telegramID = ['...', '...']
