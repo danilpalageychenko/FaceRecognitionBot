@@ -3,8 +3,8 @@ from threading import Thread
 from scipy.spatial import distance
 import telebot
 import cv2
+import sqlite3
 from dependence import token
-
 
 bot = telebot.TeleBot(token)
 
@@ -24,23 +24,29 @@ class MyThread(Thread):
         #Сounters
         counterOfName=0
         isFaceFound=0
-
         for det in self.arg2['val']:
-            titleName = self.arg2['name'][counterOfName].split('\\')[1].split('.')[0]
+            try:
+                titleName = self.arg2['name'][counterOfName].split('\\')[1].split('.')[0]
+            except:
+                titleName = self.arg2['name'][counterOfName]
             counterOfName=counterOfName+1
             a = distance.euclidean(det, self.arg1)
             if a < 0.55:
+                conn = sqlite3.connect("db/mydatabase.db")  # или :memory: чтобы сохранить в RAM
+                cursor = conn.cursor()
+                photoPatn = cursor.execute("SELECT photoPath FROM Faces WHERE id = ?", [(titleName)]).fetchone()[0]
+                info = cursor.execute("SELECT title FROM Faces WHERE id = ?", [(titleName)]).fetchone()[0]
+                conn.close()
                 if self.q == 'photo':
                     now = datetime.now()
-                    print("ОБНАРУЖЕННО:....Дата: " + now.strftime("%d-%m-%Y %H:%M") + " Прiзвище особи - " + titleName)
-                    bot.send_photo(self.chatId, open('foto/' + titleName + ".jpg", "rb"), now.strftime("%d-%m-%Y %H:%M") + " Прiзвище особи - " + titleName )
-                    cv2.imwrite('find/' + now.strftime("%d-%m-%Y %H.%M ") + titleName + '.jpg', self.arg4)
+                    print("ВИЯВЛЕНО:....Дата: " + now.strftime("%d-%m-%Y %H:%M") + " Прiзвище особи -", info)
+                    bot.send_photo(self.chatId, open(photoPatn, "rb"), now.strftime("%d-%m-%Y %H:%M") + " Прiзвище особи - " + info)
+                    cv2.imwrite('find\\' + now.strftime("%d-%m-%Y %H.%M") + " Name-" + photoPatn.split('\\')[1], self.arg4)
                     if isFaceFound == 0: isFaceFound = 1
                 else:
-                    self.q.put(titleName)
+                    self.q.put([info, photoPatn])
                 break
-
         if isFaceFound == 0 and self.q == 'photo':
-            bot.send_message(self.chatId, "Лицо не найдено в базе")
-            print("Лицо не найдено в базе")
+            bot.send_message(self.chatId, "Обличчя не знайдено в базі")
+            print("Обличчя не знайдено в базі")
 

@@ -5,6 +5,7 @@ import cv2
 import dlib
 import clas
 import clas1
+import numpy as np
 from queue import Queue
 bot = telebot.TeleBot(token)
 
@@ -26,33 +27,29 @@ f=clas1.MyThread1(predictor_path, face_rec_model_path, detector, sp, facerec)
 f.start()
 f.join()
 
-def addFace(foto):
-    return f.add(foto)
+def addFace(foto, text):
+    nparr = np.fromstring(foto, np.uint8)
+    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    resName = f.add(img, text)
+    if not resName == False:
+        cv2.imwrite(resName, img)
+    else:
+        return resName
+
 
 def findFace(foto, messageChatId):
-    img = cv2.imread(foto)
-    #cv2.imshow("Original image", image)
-    #cv2.waitKey(0)
-
+    nparr = np.fromstring(foto, np.uint8)
+    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
     rgb_image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     dets = detector(rgb_image, 1)
     if len(dets) <= 0:
         return 0
     for k, d in enumerate(dets):
         print("find face")
-        #cv2.rectangle(img, (d.left(), d.top()), (d.right(), d.bottom()), color_green, line_width)
         shape = sp(rgb_image, d)
         face_descriptor_fram = facerec.compute_face_descriptor(rgb_image, shape)
         c = clas.MyThread(face_descriptor_fram, f.dict, rgb_image, img, messageChatId, 0)
         c.start()
-        #c.join()
-
-        # sleep(0.5)
-
-    #cv2.imshow('my webcam', img)
-    #if cv2.waitKey(1) & 0xFF == ord('q'):
-    #    break
-
 
 
 def findFaceOnVideo(Video, messageChatId):
@@ -61,9 +58,7 @@ def findFaceOnVideo(Video, messageChatId):
     #Сounters
     masFace = {}
     isFindFaceOnFideo = 0
-
     q = Queue()
-
     while (cam.isOpened()):
         ret_val, img = cam.read()
         try:
@@ -71,19 +66,22 @@ def findFaceOnVideo(Video, messageChatId):
         except:
             if isFindFaceOnFideo == 0: return 0
             else: return masFace
+        ####
         dets = detector(rgb_image, 1)
+        ####
         for k, d in enumerate(dets):
             print("find face")
             if isFindFaceOnFideo == 0: isFindFaceOnFideo = 1
             shape = sp(rgb_image, d)
+            ####
             face_descriptor_fram = facerec.compute_face_descriptor(rgb_image, shape)
+            ####
             clas.MyThread(face_descriptor_fram, f.dict, rgb_image, img, messageChatId, q).start()
         while q.empty() == False:
             item = q.get()
-            if item not in masFace.keys():
+            if item[0] not in masFace.keys():
                 now = datetime.now()
-                print("ОБНАРУЖЕННО:....Дата: " + now.strftime("%d-%m-%Y %H:%M") + " Прiзвище особи - " + item)
-                bot.send_photo(messageChatId, open('foto/' + item + ".jpg", "rb"), now.strftime("%d-%m-%Y %H:%M") + " Прiзвище особи - " + item)
-            masFace[item] = (int(masFace.get(item) or 0)) + 1
-    #if isFindFaceOnFideo == 0:
-    #    return 0
+                print("ВИЯВЛЕНО:....Дата: " + now.strftime("%d-%m-%Y %H:%M") + " Прізвище особи - ", item[0])
+                bot.send_photo(messageChatId, open(item[1], "rb"), now.strftime("%d-%m-%Y %H:%M") + " Прізвище особи - " + item[0])
+            masFace[item[0]] = (int(masFace.get(item[0]) or 0)) + 1
+

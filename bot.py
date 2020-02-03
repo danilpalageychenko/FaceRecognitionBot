@@ -1,173 +1,88 @@
 import telebot
 import trnsl
 import os
+import uuid
 from dependence import token
-'''
-class MyThread(Thread):
-    def __init__(self):
-        Thread.__init__(self)
-
-    def run(self):
-'''
+from dependence import telegramID
 
 print("Запуск распознователя (Можно работать)")
-#token = '1071090511:AAHQh4ACl--lIVXhJjxLk6lfYnt8LT5OT_g'
 bot = telebot.TeleBot(token)
 
 #Сounters
 isAddFaceOrFindFace = 0
 downloaded_file = 0
 
-
 @bot.message_handler(commands=['start'])
 def start_message(message):
+    if str(message.from_user.id) not in telegramID:
+        bot.send_message(message.chat.id, 'False')
+        exit()
     keyboard1 = telebot.types.ReplyKeyboardMarkup(True)
-    keyboard1.row('Добавить Лицо', 'Найти Лицо')
-    bot.send_message(message.chat.id, 'Hi', reply_markup=keyboard1)
-
-    #keyboard = telebot.types.InlineKeyboardMarkup()
-    #first_btn = telebot.types.InlineKeyboardButton(text='Добавить Лицо', callback_data='first_cb')
-    #second_btn = telebot.types.InlineKeyboardButton(text='Найти Лицо', callback_data='second_cb')
-    #keyboard.add(first_btn, second_btn)
-    #bot.send_message(message.chat.id, text='Hi', reply_markup=keyboard)
-
-#downloaded_file = 0
+    keyboard1.row('Додати обличчя', 'Знайти обличчя')
+    bot.send_message(message.chat.id, 'Вiтаю', reply_markup=keyboard1)
 
 @bot.message_handler(content_types=['text'])
 def send_text(message):
+    if str(message.from_user.id) not in telegramID:
+        bot.send_message(message.chat.id, 'False')
+        exit()
     global isAddFaceOrFindFace, downloaded_file
-    if message.text and isAddFaceOrFindFace == 3:
+    if message.text and isAddFaceOrFindFace == 3 and message.text != ('Додати обличчя' or 'Знайти обличчя'):
         isAddFaceOrFindFace = 0
-        photoPathAndName = 'foto\\' + message.text + '.jpg'
-        with open(photoPathAndName, 'wb') as new_file:
-            new_file.write(downloaded_file)
-        # downloaded_file = 0
-        # bot.reply_to(message, "Фото добавлено")
-        if trnsl.addFace(photoPathAndName) == 0:
-            bot.send_message(message.chat.id, 'На фото не найдено лица')
-            os.remove(photoPathAndName)
+        if trnsl.addFace(downloaded_file, message.text) == False:
+            bot.send_message(message.chat.id, 'На фото не знайдено обличчя')
         else:
-            bot.send_message(message.chat.id, 'Добавлено')
-
-    elif message.text == 'Добавить Лицо':
-        bot.send_message(message.chat.id, 'Отправте Фото для загрузки')
+            bot.send_message(message.chat.id, 'Додано')
+    elif message.text == 'Додати обличчя':
+        bot.send_message(message.chat.id, 'Надішліть фото для завантаження')
         isAddFaceOrFindFace = 1
-    elif message.text == 'Найти Лицо':
-        bot.send_message(message.chat.id, 'Отправте Фото или Видео для поиска')
+    elif message.text == 'Знайти обличчя':
+        bot.send_message(message.chat.id, 'Надішліть Фото або Відео для пошуку')
         isAddFaceOrFindFace = 2
     elif message.text == 'qwe':
-        bot.send_message(message.chat.id, trnsl.f.dict)
+        bot.send_message(message.chat.id, trnsl.f.dict.items() )
     elif message:
         print(isAddFaceOrFindFace)
-        bot.send_message(message.chat.id, 'Неправильный ввод')
-
+        bot.send_message(message.chat.id, 'Невірне введення')
 
 @bot.message_handler(content_types=['photo'])
 def handle_docs_photo(message):
     global isAddFaceOrFindFace, downloaded_file
-
     file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
     downloaded_file = bot.download_file(file_info.file_path)
-
     if isAddFaceOrFindFace == 1:
-        bot.send_message(message.chat.id, 'Введите имя')
+        bot.send_message(message.chat.id, 'Введіть ім\'я')
         isAddFaceOrFindFace = 3
     elif isAddFaceOrFindFace == 2:
         isAddFaceOrFindFace = 0
-        photoPathAndName = 'inTheProcess\\' + str(message.chat.id) + '.jpg'
-        with open(photoPathAndName, 'wb') as new_file:
-            new_file.write(downloaded_file)
-        if trnsl.findFace(photoPathAndName, message.chat.id) == 0:
-            bot.send_message(message.chat.id, 'На фото не найдено лица')
+        if trnsl.findFace(downloaded_file, message.chat.id) == 0:
+            bot.send_message(message.chat.id, 'На фото не знайдено обличчя')
         else:
-            bot.send_message(message.chat.id, 'Поиск запущен!')
-        os.remove(photoPathAndName)
+            bot.send_message(message.chat.id, 'Пошук запущений!')
     else:
         isAddFaceOrFindFace = 0
 
 @bot.message_handler(content_types=['video'])
 def handle_docs_video(message):
     global isAddFaceOrFindFace
-
     file_info = bot.get_file(message.video.file_id)
     downloaded_file = bot.download_file(file_info.file_path)
-
-
     if isAddFaceOrFindFace == 2:
-        photoPathAndName = 'inTheProcess\\' + str(message.chat.id) + '.mp4'
+        photoPathAndName = 'inTheProcess\\' + str(uuid.uuid1()) + '.mp4'
         with open(photoPathAndName, 'wb') as new_file:
             new_file.write(downloaded_file)
-        bot.send_message(message.chat.id, 'Поиск запущен!')
-        print('Поиск запущен!')
+        bot.send_message(message.chat.id, 'Пошук запущений!')
+        print('Пошук запущений!')
         res = trnsl.findFaceOnVideo(photoPathAndName, message.chat.id)
         if res == 0:
-            bot.send_message(message.chat.id, 'На Видео не найдено лиц')
+            bot.send_message(message.chat.id, 'На відео не знайдено облич')
         else:
-            print(res)
-            print("Поиск завершон!")
-            bot.send_message(message.chat.id, str(res) + '\n' + 'Поиск завершон!')
+            print("Пошук завершений!")
+            resFul = ""
+            for i in res.keys():
+                resFul += "Особа: " + str(i) + ", "  + str(res.get(i)) + " разів\n"
+            bot.send_message(message.chat.id, 'Пошук завершений!\n' + "Знайдено:\n" + resFul)
         os.remove(photoPathAndName)
         isAddFaceOrFindFace = 0
-
-
-
-
-
-
-
-
-
-
-    #global downloaded_file
-    '''if message.text == 'Добавить Лицо':
-        bot.send_message(message.chat.id, 'Отправте Фото')
-        @bot.message_handler(content_types=['photo'])
-        def handle_docs_photo(message):
-
-            file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
-            global downloaded_file
-            downloaded_file = bot.download_file(file_info.file_path)
-            bot.send_message(message.chat.id, 'Введите имя')'''
-
-    '''elif message.text == 'Найти Лицо':
-        bot.send_message(message.chat.id, 'Отправте Фото для поиска')
-        @bot.message_handler(content_types=['photo'])
-        def handle_docs_photo(message):
-            file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
-            downloaded_file = bot.download_file(file_info.file_path)
-            with open('test/test.jpg', 'wb') as new_file:
-                new_file.write(downloaded_file)
-
-            trnsl.find('test/test.jpg')'''
-
-
-
-    '''elif message and downloaded_file != 0 :
-        bot.send_message(message.chat.id, 'добавлено')
-        with open('foto/' + message.text + '.jpg', 'wb') as new_file:
-            new_file.write(downloaded_file)
-        downloaded_file = 0
-        #bot.reply_to(message, "Фото добавлено")
-        trnsl.addFace('photos\Danil.jpg')'''
-
-    '''elif message:
-        print(downloaded_file)
-        bot.send_message(message.chat.id, 'gggggggggggggggggg')
-    '''
-'''
-#@bot.callback_query_handler(func=lambda call: call.data == 'first_cb')
-@bot.callback_query_handler(func=lambda call: True)
-def add_photo(call):
-    global i
-    global j
-    if call.data == 'first_cb':
-        bot.send_message(call.message.chat.id, 'Отправте Фото для загрузки')
-        i = 1
-        #exit()
-    if call.data == 'second_cb':
-        bot.send_message(call.message.chat.id, 'Отправте Фото для поиска')
-        i = 2
-        #exit()
-'''
 
 bot.polling()
