@@ -54,7 +54,7 @@ class MyThread1(Thread):
                         face_descriptor_name.append(increment)
                         self.dict = {'name': face_descriptor_name, 'val': face_descriptor_it}
                         try:
-                            titleName = fil.split('\\')[1].split('.')[0]
+                            titleName = fil.split('/')[1].split('.')[0]
                         except:
                             titleName = fil
                         cursor.execute("INSERT INTO Faces VALUES(?, ?, ?)", [(increment), (titleName), (fil)])
@@ -91,7 +91,7 @@ class MyThread1(Thread):
             face_descriptor_it.append(self.facerec.compute_face_descriptor(img, shape))
         conn = sqlite3.connect("db/mydatabase.db")  # или :memory: чтобы сохранить в RAM
         cursor = conn.cursor()
-        photoPath = "foto\\" + str(increment) + ".jpg"
+        photoPath = "foto/" + str(increment) + ".jpg"
         cursor.execute("INSERT INTO Faces (id, title, photoPath) VALUES(?, ?, ?)", [(increment), (text), (photoPath)])
         conn.commit()
         conn.close()

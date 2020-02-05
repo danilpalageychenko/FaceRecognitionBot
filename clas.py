@@ -41,8 +41,7 @@ class MyThread(Thread):
                     now = datetime.now()
                     print("ВИЯВЛЕНО:....Дата: " + now.strftime("%d-%m-%Y %H:%M") + " Прiзвище особи -", info)
                     bot.send_photo(self.chatId, open(photoPatn, "rb"), now.strftime("%d-%m-%Y %H:%M") + " Прiзвище особи - " + info)
-                    print(photoPatn)
-                    cv2.imwrite('find\\' + now.strftime("%d-%m-%Y %H.%M") + " Name-" + photoPatn.split('\\')[1], self.arg4)
+                    cv2.imwrite('find/' + now.strftime("%d-%m-%Y %H.%M") + " Name-" + photoPatn.split('/')[1], self.arg4)
                     if isFaceFound == 0: isFaceFound = 1
                 else:
                     self.q.put([info, photoPatn])
